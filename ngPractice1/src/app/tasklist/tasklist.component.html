@@ -1,0 +1,16 @@
+<ul *ngFor="let task of tasks">
+  <li appChangeColor>
+    <p>{{ task.title }}</p>
+    <p>{{ task.description }}</p>
+  </li>
+</ul>
+<p *ngIf="!tasks.length">No Tasks Available</p>
+<form [formGroup]="taskForm">
+    <label>Title: </label>
+    <input type="text" formControlName="title"><br>
+    <label>Description: </label>
+    <input type="text" formControlName="description"><br>
+    <button (click)="onSubmit()">Submit</button>
+</form>
+<p *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">Title is Required</p>
+<p *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">Description is Required</p>
