@@ -1,8 +1,11 @@
-<ul *ngFor="let task of tasks">
-  <li appChangeColor>
-    <p>{{ task.title }}</p>
-    <p>{{ task.description }}</p>
-  </li>
+<label >Search Title</label>
+<input type="text" (keyup)="onSearch()" (change)="onChange()" [(ngModel)]="searchTitle"><br>
+<select [(ngModel)]="selectedFilterValue">
+      <option value="">All</option>
+      <option *ngFor="let option of filterOptions" [value]="option.value">{{ option.label }}</option>
+    </select>
+<ul *ngFor="let task of tasks | filterTasks: 'status':selectedFilterValue">
+  <app-task-detail [details]="task" (newDetails)="editTask($event)"></app-task-detail>
 </ul>
 <p *ngIf="!tasks.length">No Tasks Available</p>
 <form [formGroup]="taskForm">

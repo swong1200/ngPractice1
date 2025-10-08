@@ -4,19 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TasklistComponent } from './tasklist/tasklist.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeColorDirective } from './directives/change-color.directive';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { FilterTasksPipe } from './filter-tasks.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasklistComponent,
-    ChangeColorDirective
+    ChangeColorDirective,
+    TaskDetailComponent,
+    FilterTasksPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
